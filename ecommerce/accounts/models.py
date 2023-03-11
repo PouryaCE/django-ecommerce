@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
+from .manager import UserManager
 
 
 # Create your models here.
@@ -12,13 +13,15 @@ class User(AbstractBaseUser):
     )
     phone_number = models.CharField(max_length=11, verbose_name='شماره همراه')
     email = models.EmailField(verbose_name='ایمیل')
-    first_name = models.CharField(max_length=30, verbose_name='نام')
-    last_name = models.CharField(max_length=50, verbose_name='نام خانوادگی')
-    age = models.SmallIntegerField(verbose_name='سن')
-    gender = models.CharField(max_length=30, choices=gender_choices, verbose_name='جنسیت')
-    bio = models.TextField(verbose_name='بیو گرافی')
+    first_name = models.CharField(max_length=30, verbose_name='نام', null=True, blank=True)
+    last_name = models.CharField(max_length=50, verbose_name='نام خانوادگی', null=True, blank=True)
+    age = models.SmallIntegerField(verbose_name='سن', null=True, blank=True)
+    gender = models.CharField(max_length=30, choices=gender_choices, verbose_name='جنسیت', default='m')
+    bio = models.TextField(verbose_name='بیو گرافی', null=True, blank=True)
     is_admin = models.BooleanField(default=False, verbose_name='آیا کاربر ادمین است؟')
     is_active = models.BooleanField(default=True, verbose_name='آیا کاربر فعال است؟')
+
+    objects = UserManager()
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
