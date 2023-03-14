@@ -11,8 +11,8 @@ class User(AbstractBaseUser):
         ('f', 'female'),
         ('m', 'male')
     )
-    phone_number = models.CharField(max_length=11, verbose_name='شماره همراه')
-    email = models.EmailField(verbose_name='ایمیل')
+    phone_number = models.CharField(max_length=11, unique=True, verbose_name='شماره همراه')
+    email = models.EmailField(unique=True, verbose_name='ایمیل')
     first_name = models.CharField(max_length=30, verbose_name='نام', null=True, blank=True)
     last_name = models.CharField(max_length=50, verbose_name='نام خانوادگی', null=True, blank=True)
     age = models.SmallIntegerField(verbose_name='سن', null=True, blank=True)
