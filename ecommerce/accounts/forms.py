@@ -45,10 +45,11 @@ class UserChangeForm(forms.ModelForm):
 
     # def clean_phone_number(self):
     #     phone_number = self.cleaned_data["phone_number"]
-    #     user = User.objects.filter(phone_number=phone_number).exists()
-    #     if user:
-    #         return ValidationError("کاربری با این شماره تلفن قبلا ثبت شده است")
-    #     return phone_number
+        # phone_number = self.cleaned_data["phone_number"]
+        # user = User.objects.filter(phone_number=phone_number).exists()
+        # if user:
+        #     return ValidationError("کاربری با این شماره تلفن قبلا ثبت شده است")
+        # return phone_number
 
     # def clean_email(self):
     #     email = self.cleaned_data["email"]

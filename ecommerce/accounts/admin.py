@@ -18,7 +18,8 @@ class UserAdmin(BaseUserAdmin):
 
     fieldsets = (
         ('اظلاعات کاربر', {'fields': (
-            'phone_number', 'email', 'first_name', 'last_name', 'age', 'gender', 'bio', 'is_admin', 'is_active')}),
+            'password', 'phone_number', 'email','first_name', 'last_name', 'age', 'gender', 'bio', 'is_admin',
+            'is_active')}),
     )
 
     add_fieldsets = (

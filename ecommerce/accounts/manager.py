@@ -2,17 +2,17 @@ from django.contrib.auth.models import BaseUserManager
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, phone_number, email, password1, password2):
+    def create_user(self, phone_number, email, password):
+        print("*"*100)
+        print(password)
         if not phone_number:
             raise ValueError("کاربر باید حتما شماره تلفنی داشته باشد")
         if not email:
             raise ValueError("کاربر باید حتما ایمیلی داشته باشد")
-        if not password1:
-            raise ValueError("کاربر باید حتما پسوردی داشته باشد")
-        if not password2:
+        if not password:
             raise ValueError("کاربر باید حتما پسوردی داشته باشد")
         user = self.model(phone_number=phone_number, email=email)
-        user.set_password(password1)
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
